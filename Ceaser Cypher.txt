@@ -1,0 +1,57 @@
+//implementation of Ceasar cipher
+
+/*
+Encryption using Cryptography technique
+We convert plain text into cypher(encrypted text) using key.
+Key is a number.
+Plain text contains only alphabets.
+*/
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+int main(void){
+    string plain_text;
+    cout<<"Enter message: ";
+    cin>>plain_text;
+   
+    int key= 0;
+    cout<<"Enter key: ";
+    cin>>key;
+   
+    string cypher= plain_text;
+    //strcpy(cypher,);
+   
+    for(int i=0; i<plain_text.length(); i++)
+    {
+        cypher[i]= plain_text[i]+key;
+       
+        if(cypher[i]>122){
+            //cout<<cypher[i]%122-1;
+            cypher[i]= 'a'+cypher[i]%122-1;
+        }
+    }
+       
+    cout<<"Cypher text: "<<cypher;
+   
+    cout<<"\nOn receiver's side: \nChange back to plain text ";
+   
+    for(int i=0; i<cypher.length(); i++)
+    {
+        plain_text[i]= (cypher[i]-key);  
+        if(plain_text[i]<97)
+        {
+            plain_text[i]= 'z'-97+plain_text[i]+1;
+        }
+    }
+       
+    cout<<"\nPlain text: "<<plain_text;
+   
+    return 0;
+}
+
+/*
+Enter message: deva
+Enter key: 28
+Cypher text: fgxc
+*/
